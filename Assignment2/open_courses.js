@@ -306,6 +306,40 @@ function submitEdit(){
     parentTR.cells[5].innerHTML=coursetime;
     parentTR.cells[6].innerHTML=courselocation;
     parentTR.cells[7].innerHTML=duration+"min";
+
+
+    //update roomarrangement list
+    let parentTBODY=parentTR.parentNode;
+    roomarrangement=[];
+    //alert(parentTBODY.rows.length)
+    for (let i=1;i<parentTBODY.rows.length;i++){
+        let roomidx;
+        let courseLocation=parentTBODY.rows[i].cells[6].innerHTML;
+        if (courseLocation==="Teaching Building No.1 Lecture Hall"){
+            roomidx=0;
+        }
+        else if (courseLocation==="Research Building Lecture Hall"){
+            roomidx=1;
+        }
+        else {
+            roomidx=2;
+        }
+        let starttime=parentTBODY.rows[i].cells[5].innerHTML;
+        let sthour= starttime.split(":")[0];
+        let stmin= starttime.split(":")[1];
+        let durat = parentTBODY.rows[i].cells[7].innerHTML.replace("min","");
+        var sthour_int=parseInt(sthour);
+        var stmin_int=parseInt(stmin);
+        //alert(sthour_int)
+        var dur_int = parseInt(durat);
+        let endhour_int=Math.floor((sthour_int*60+stmin_int+dur_int)/60);
+        let endmin_int=(sthour_int*60+stmin_int+dur_int)-endhour_int*60;
+        let courseda= parentTBODY.rows[i].cells[4].innerHTML;
+        roomarrangement.push({coursename:parentTBODY.rows[i].cells[0].innerHTML, coursecod:parentTBODY.rows[i].cells[1].innerHTML, teacher:parentTBODY.rows[i].cells[3].innerHTML,roomid:roomidx,coursedate:courseda, sth: sthour_int, stm: stmin_int, endh: endhour_int, endm: endmin_int})
+    }
+
+
+
     closeeditdialog();
     document.getElementById('add_course_button').style.display='block';
     let editbuttonlist=document.getElementsByName('EditButton')
