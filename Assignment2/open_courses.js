@@ -1,6 +1,6 @@
 let edit_obj;
 let roomarrangement=[];
-let courses = [];
+
 
 function setDate(){
     var date_now = new Date();
@@ -43,14 +43,16 @@ function checkSubmit(){
     let duration=document.forms[0]['duration'].value;
     //alert(courseName+" "+coursecode+" "+lang+" "+teacher+" "+coursedate+" "+coursetime+" "+courseLocation+" "+duration);
     let onlyeng=new RegExp(/^[a-zA-Z]+$/)
+    let engspace = new RegExp(/^[A-Za-z ]+$/)
     let onlynum= new RegExp(/^[0-9]+$/)
     let onlyengandnum=new RegExp(/^[a-zA-Z0-9]+$/)
+    let onlyspace = new RegExp(/^[ ]+$/)
 
     if (courseName===""||coursecode===""||lang===""||teacher===""||coursedate===""||coursetime===""||courseLocation==="null"||duration===""){
         alert("all attributes must be non-null!")
         return false;
     }
-    if (!onlyeng.test(courseName)){
+    if (!engspace.test(courseName)||onlyspace.test(courseName)){
         alert("invalid course name!");
         return false;
     }
@@ -72,6 +74,14 @@ function checkSubmit(){
     }
     if (!checkCourseDuplication(courseName,coursecode)){
         alert("two same course code cannot have different course name!")
+        return false;
+    }
+    if (!checkTeacherOneLecPerDay(teacher,coursedate)){
+        alert("one teacher can only have one lec per day")
+        return false;
+    }
+    if (!checkCoursePerDay(coursecode,coursedate)){
+        alert("One course is scheduled at most once a day")
         return false;
     }
 
@@ -121,13 +131,24 @@ function checkCourseDuplication(coursename, coursecode){
     return true;
 }
 
-function checkTeacherOneLecPerDay(){
+function checkTeacherOneLecPerDay(teacher,coursedate){
     //one teacher can only have one lec per day
+    for (let i=0;i<roomarrangement.length;i++){
+        if (roomarrangement.at(i).coursedate===coursedate && roomarrangement.at(i).teacher===teacher){
+            return false;
+        }
+    }
+    return true;
 }
 
-function checkCoursePerDay(){
+function checkCoursePerDay(coursecode,coursedate){
     //One course is scheduled at most once a day.
-
+    for (let i=0;i<roomarrangement.length;i++){
+        if (roomarrangement.at(i).coursedate===coursedate && roomarrangement.at(i).coursecod===coursecode){
+            return false;
+        }
+    }
+    return true;
 }
 
 function onclickSubmitCourse(){
@@ -198,8 +219,35 @@ function removeRow(inputobj){
     parentTBODY.removeChild(parentTR);
 
     //remove from list
-    roomarrangement=roomarrangement.filter(s=>{return s.coursecod!==parentTR.cells[1].innerHTML || s.coursedate!==parentTR.cells[4].innerHTML});
 
+    roomarrangement=[];
+    //alert(parentTBODY.rows.length)
+    for (let i=1;i<parentTBODY.rows.length;i++){
+        let roomidx;
+        let courseLocation=parentTBODY.rows[i].cells[6].innerHTML;
+        if (courseLocation==="Teaching Building No.1 Lecture Hall"){
+            roomidx=0;
+        }
+        else if (courseLocation==="Research Building Lecture Hall"){
+            roomidx=1;
+        }
+        else {
+            roomidx=2;
+        }
+        let starttime=parentTBODY.rows[i].cells[5].innerHTML;
+        let sthour= starttime.split(":")[0];
+        let stmin= starttime.split(":")[1];
+        let durat = parentTBODY.rows[i].cells[7].innerHTML.replace("min","");
+        var sthour_int=parseInt(sthour);
+        var stmin_int=parseInt(stmin);
+        //alert(sthour_int)
+        var dur_int = parseInt(durat);
+        let endhour_int=Math.floor((sthour_int*60+stmin_int+dur_int)/60);
+        let endmin_int=(sthour_int*60+stmin_int+dur_int)-endhour_int*60;
+        let courseda= parentTBODY.rows[i].cells[4].innerHTML;
+        roomarrangement.push({coursename:parentTBODY.rows[i].cells[0].innerHTML, coursecod:parentTBODY.rows[i].cells[1].innerHTML, teacher:parentTBODY.rows[i].cells[3].innerHTML,roomid:roomidx,coursedate:courseda, sth: sthour_int, stm: stmin_int, endh: endhour_int, endm: endmin_int})
+    }
+    //alert(roomarrangement.length);
 }
 
 function edit(inputobj){
