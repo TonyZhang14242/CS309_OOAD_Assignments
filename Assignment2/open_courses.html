@@ -7,6 +7,7 @@
     <title>Title</title>
 </head>
 <body>
+<div class="main" style="display: block">
 <table>
     <caption id="a">
         <h1>Open Courses</h1>
@@ -35,96 +36,99 @@
         <td><input type="button" value=" Edit " name="EditButton" onclick="edit(this)"><br><input type="button" value="Delete" name="deleteButton" onclick="removeRow(this)"></td>
     </tr>
     </tbody>
-
 </table>
+</div>
+
 <div id="add_course_button" style="display: block">
     <input type="button" value="Add Course" onclick="onclickAddCourse()"/>
 </div>
 
-<div id="add_course" style="display: none">
-    <h3>Add Course</h3>
-    <form>
-        Course Name:
-        <label>
-            <input type="text" name="course-name">
-        </label><br>Course Code:
-        <label>
-            <input type="text" name="course-code">
-        </label><br>Language:
-        <label>
-            <input type="radio" value="Chinese" name="language">Chinese
-            <input type="radio" value="English" name="language">English
-            <input type="radio" value="Bilingual" name="language">Bilingual
-        </label><br>Teacher:
-        <label>
-            <input type="text" name="teacher">
-        </label><br>Date:
-        <label>
-            <input type="date" id="course-date" name="course-date">
-        </label>
-        <br>Time:
-        <label>
-            <input type="time" id="course-time" name="course-time" min="00:00" max="23:59">
-        </label><br>Location:
-        <label for="course-location"></label>
-        <select id="course-location">
-            <option value="null">--</option>
-            <option value="Teaching Building No.1 Lecture Hall">Teaching Building No.1 Lecture Hall</option>
-            <option value="Research Building Lecture Hall">Research Building Lecture Hall</option>
-            <option value="Library Conference Hall and Activity Room">Library Conference Hall and Activity Room</option>
-        </select>
-        <br>Duration:
-        <label>
-            <input type="text" name="duration">
-        </label>
-        <br>
-        <input type="button" value="Submit" onclick="onclickSubmitCourse()"/>
-        <input type="button" value="close" onclick = "closedialog()"/>
-        <br>
-    </form>
+<div id="model1" class="model" style="display: none">
+    <div class="container" id="add_course" style="display: none">
+        <h3>Add Course</h3>
+        <form>
+            Course Name:
+            <label>
+                <input type="text" name="course-name">
+            </label><br>Course Code:
+            <label>
+                <input type="text" name="course-code">
+            </label><br>Language:
+            <label>
+                <input type="radio" value="Chinese" name="language">Chinese
+                <input type="radio" value="English" name="language">English
+                <input type="radio" value="Bilingual" name="language">Bilingual
+            </label><br>Teacher:
+            <label>
+                <input type="text" name="teacher">
+            </label><br>Date:
+            <label>
+                <input type="date" id="course-date" name="course-date">
+            </label>
+            <br>Time:
+            <label>
+                <input type="time" id="course-time" name="course-time" min="00:00" max="23:59">
+            </label><br>Location:
+            <label for="course-location"></label>
+            <select id="course-location">
+                <option value="null">--</option>
+                <option value="Teaching Building No.1 Lecture Hall">Teaching Building No.1 Lecture Hall</option>
+                <option value="Research Building Lecture Hall">Research Building Lecture Hall</option>
+                <option value="Library Conference Hall and Activity Room">Library Conference Hall and Activity Room</option>
+            </select>
+            <br>Duration:
+            <label>
+                <input type="text" name="duration">
+            </label>
+            <br>
+            <input type="button" value="Submit" onclick="checkSubmit()"/>
+            <input type="button" value="close" onclick = "closedialog()"/>
+            <br>
+        </form>
+    </div>
+    <div class="container" id="edit_course" style="display: none">
+        <h3>Edit Course</h3>
+        <form>
+            Course Name:
+            <label>
+                <input type="text" name="course-name" id="edit-course-name">
+            </label><br>Course Code:
+            <label>
+                <input type="text" name="course-code" id="edit-course-code">
+            </label><br>Language:
+            <label>
+                <input type="radio" value="Chinese" name="edit-language" id="Chinese">Chinese
+                <input type="radio" value="English" name="edit-language" id="English">English
+                <input type="radio" value="Bilingual" name="edit-language" id="Bilingual">Bilingual
+            </label><br>Teacher:
+            <label>
+                <input type="text" name="teacher" id="edit-teacher">
+            </label><br>Date:
+            <label>
+                <input type="date" id="edit-course-date" name="course-date">
+            </label>
+            <br>Time:
+            <label>
+                <input type="time" id="edit-course-time" name="course-time" min="00:00" max="23:59">
+            </label><br>Location:
+            <label for="edit-course-location"></label>
+            <select id="edit-course-location">
+                <option value="null">--</option>
+                <option value="Teaching Building No.1 Lecture Hall">Teaching Building No.1 Lecture Hall</option>
+                <option value="Research Building Lecture Hall">Research Building Lecture Hall</option>
+                <option value="Library Conference Hall and Activity Room">Library Conference Hall and Activity Room</option>
+            </select>
+            <br>Duration:
+            <label>
+                <input type="text" name="duration" id="edit-duration">
+            </label>
+            <br>
+            <input type="button" value="Submit" onclick="submitEdit()"/>
+            <input type="button" value="close" onclick = "closeeditdialog()"/>
+            <br>
+        </form>
+    </div>
 </div>
 
-<div id="edit_course" style="display: none">
-    <h3>Edit Course</h3>
-    <form>
-        Course Name:
-        <label>
-            <input type="text" name="course-name" id="edit-course-name">
-        </label><br>Course Code:
-        <label>
-            <input type="text" name="course-code" id="edit-course-code">
-        </label><br>Language:
-        <label>
-            <input type="radio" value="Chinese" name="edit-language" id="Chinese">Chinese
-            <input type="radio" value="English" name="edit-language" id="English">English
-            <input type="radio" value="Bilingual" name="edit-language" id="Bilingual">Bilingual
-        </label><br>Teacher:
-        <label>
-            <input type="text" name="teacher" id="edit-teacher">
-        </label><br>Date:
-        <label>
-            <input type="date" id="edit-course-date" name="course-date">
-        </label>
-        <br>Time:
-        <label>
-            <input type="time" id="edit-course-time" name="course-time" min="00:00" max="23:59">
-        </label><br>Location:
-        <label for="edit-course-location"></label>
-        <select id="edit-course-location">
-            <option value="null">--</option>
-            <option value="Teaching Building No.1 Lecture Hall">Teaching Building No.1 Lecture Hall</option>
-            <option value="Research Building Lecture Hall">Research Building Lecture Hall</option>
-            <option value="Library Conference Hall and Activity Room">Library Conference Hall and Activity Room</option>
-        </select>
-        <br>Duration:
-        <label>
-            <input type="text" name="duration" id="edit-duration">
-        </label>
-        <br>
-        <input type="button" value="Submit" onclick="submitEdit()"/>
-        <input type="button" value="close" onclick = "closeeditdialog()"/>
-        <br>
-    </form>
-</div>
 </body>
 </html>
