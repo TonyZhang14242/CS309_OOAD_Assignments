@@ -61,3 +61,8 @@ div {
     border-radius: 6px;
     padding: 1em;
 }
+
+#b{
+    object-fit: cover;
+    width: 100%;
+}
