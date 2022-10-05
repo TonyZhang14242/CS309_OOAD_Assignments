@@ -66,3 +66,36 @@ div {
     object-fit: cover;
     width: 100%;
 }
+
+#add_course_button1{
+    cursor: url("choice.cur"),auto;
+}
+
+#submitinit{
+    cursor: url("choice.cur"),auto;
+}
+
+#closeinit{
+    cursor: url("choice.cur"),auto;
+}
+
+#submitedit{
+    cursor: url("choice.cur"),auto;
+}
+
+#closeedit{
+    cursor: url("choice.cur"),auto;
+}
+
+#course-edit-button{
+    cursor: url("choice.cur"),auto;
+}
+
+#course-delete-button{
+    cursor: url("choice.cur"),auto;
+}
+
+body{
+    cursor:url('move.cur'),auto;
+}
+

@@ -33,14 +33,14 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><input type="button" value=" Edit " name="EditButton" onclick="edit(this)"><br><input type="button" value="Delete" name="deleteButton" onclick="removeRow(this)"></td>
+        <td><input type="button" id="course-edit-button" value=" Edit " name="EditButton" onclick="edit(this)"><br><input type="button" id="course-delete-button" value="Delete" name="deleteButton" onclick="removeRow(this)"></td>
     </tr>
     </tbody>
 </table>
 </div>
 
 <div id="add_course_button" style="display: block">
-    <input type="button" value="Add Course" onclick="onclickAddCourse()"/>
+    <input type="button" id="add_course_button1" value="Add Course" onclick="onclickAddCourse()"/>
 </div>
 
 <div id="model1" class="model" style="display: none">
@@ -81,8 +81,8 @@
                 <input type="text" name="duration">
             </label>
             <br>
-            <input type="button" value="Submit" onclick="checkSubmit()"/>
-            <input type="button" value="close" onclick = "closedialog()"/>
+            <input type="button" id="submitinit" value="Submit" onclick="checkSubmit()"/>
+            <input type="button" id="closeinit" value="close" onclick = "closedialog()"/>
             <br>
         </form>
     </div>
@@ -123,8 +123,8 @@
                 <input type="text" name="duration" id="edit-duration">
             </label>
             <br>
-            <input type="button" value="Submit" onclick="submitEdit()"/>
-            <input type="button" value="close" onclick = "closeeditdialog()"/>
+            <input type="button" id="submitedit" value="Submit" onclick="submitEdit()"/>
+            <input type="button" id="closeedit" value="close" onclick = "closeeditdialog()"/>
             <br>
         </form>
     </div>

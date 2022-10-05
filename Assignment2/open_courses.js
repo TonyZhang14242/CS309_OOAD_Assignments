@@ -4,6 +4,8 @@ let roomarrangement=[];
 
 function setDate(){
     var date_now = new Date();
+	date_now = date_now.setDate(date_now.getDate()+1);
+	date_now = new Date(date_now);
     var year = date_now.getFullYear();
     var month = date_now.getMonth()+1 < 10 ? "0"+(date_now.getMonth()+1) : (date_now.getMonth()+1);
     var date = date_now.getDate() < 10 ? "0"+date_now.getDate() : date_now.getDate();
