@@ -47,84 +47,84 @@
     <div class="container" id="add_course" style="display: none">
         <h3>Add Course</h3>
         <form>
-            Course Name:
+            Course Name:&nbsp;
             <label>
-                <input type="text" name="course-name">
-            </label><br>Course Code:
+                <input type="text" name="course-name" style="width: 300px; height: 20px">
+            </label><br>Course&nbsp;&nbsp;Code:&nbsp;
             <label>
-                <input type="text" name="course-code">
-            </label><br>Language:
+                <input type="text" name="course-code" style="width: 300px; height: 20px">
+            </label><br>&ensp;&ensp;Language:
             <label>
                 <input type="radio" value="Chinese" name="language">Chinese
                 <input type="radio" value="English" name="language">English
                 <input type="radio" value="Bilingual" name="language">Bilingual
-            </label><br>Teacher:
+            </label><br>&ensp;&ensp;&ensp;&nbsp;&nbsp;&nbsp;Teacher:&nbsp;&nbsp;
             <label>
-                <input type="text" name="teacher">
-            </label><br>Date:
+                <input type="text" name="teacher" style="width: 300px; height: 20px">
+            </label><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Date:&ensp;
             <label>
-                <input type="date" id="course-date" name="course-date">
+                <input type="date" id="course-date" name="course-date" style="width: 301px; height: 20px">
             </label>
-            <br>Time:
+            <br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Time:&ensp;
             <label>
-                <input type="time" id="course-time" name="course-time" min="00:00" max="23:59">
-            </label><br>Location:
+                <input type="time" id="course-time" name="course-time" min="00:00" max="23:59" style="width: 301px; height: 20px;">
+            </label><br>&ensp;&ensp;&ensp; &ensp;Location:&nbsp;
             <label for="course-location"></label>
-            <select id="course-location">
+            <select id="course-location" style="width: 308px; height: 24px">
                 <option value="null">--</option>
                 <option value="Teaching Building No.1 Lecture Hall">Teaching Building No.1 Lecture Hall</option>
                 <option value="Research Building Lecture Hall">Research Building Lecture Hall</option>
                 <option value="Library Conference Hall and Activity Room">Library Conference Hall and Activity Room</option>
             </select>
-            <br>Duration:
+            <br>&ensp;&ensp;&ensp;&ensp;Duration:&ensp;
             <label>
-                <input type="text" name="duration">
+                <input type="text" name="duration" style="width: 300px; height: 20px">
             </label>
-            <br>
+            <br><br>
             <input type="button" id="submitinit" value="Submit" onclick="checkSubmit()"/>
-            <input type="button" id="closeinit" value="close" onclick = "closedialog()"/>
+            <input type="button" id="closeinit" value="Close" onclick = "closedialog()"/>
             <br>
         </form>
     </div>
-    <div class="container" id="edit_course" style="display: none">
+    <div class="container" id="edit_course" style="display: none; text-align: justify-all">
         <h3>Edit Course</h3>
         <form>
-            Course Name:
+            Course Name:&nbsp;
             <label>
-                <input type="text" name="course-name" id="edit-course-name">
-            </label><br>Course Code:
+                <input type="text" name="course-name" id="edit-course-name" style="width: 300px; height: 20px">
+            </label><br>Course&nbsp;&nbsp;Code:&nbsp;
             <label>
-                <input type="text" name="course-code" id="edit-course-code">
-            </label><br>Language:
+                <input type="text" name="course-code" id="edit-course-code" style="width: 300px; height: 20px">
+            </label><br>&ensp;&ensp;Language:
             <label>
                 <input type="radio" value="Chinese" name="edit-language" id="Chinese">Chinese
                 <input type="radio" value="English" name="edit-language" id="English">English
                 <input type="radio" value="Bilingual" name="edit-language" id="Bilingual">Bilingual
-            </label><br>Teacher:
+            </label><br>&ensp;&ensp;&ensp;&nbsp;&nbsp;&nbsp;Teacher:&nbsp;&nbsp;
             <label>
-                <input type="text" name="teacher" id="edit-teacher">
-            </label><br>Date:
+                <input type="text" name="teacher" id="edit-teacher" style="width: 300px; height: 20px">
+            </label><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Date:&ensp;
             <label>
-                <input type="date" id="edit-course-date" name="course-date">
+                <input type="date" id="edit-course-date" name="course-date" style="width: 301px; height: 20px">
             </label>
-            <br>Time:
+            <br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Time:&ensp;
             <label>
-                <input type="time" id="edit-course-time" name="course-time" min="00:00" max="23:59">
-            </label><br>Location:
+                <input type="time" id="edit-course-time" name="course-time" min="00:00" max="23:59" style="width: 301px; height: 20px">
+            </label><br>&ensp;&ensp;&ensp; &ensp;Location:&nbsp;
             <label for="edit-course-location"></label>
-            <select id="edit-course-location">
+            <select id="edit-course-location" style="width: 308px; height: 24px">
                 <option value="null">--</option>
                 <option value="Teaching Building No.1 Lecture Hall">Teaching Building No.1 Lecture Hall</option>
                 <option value="Research Building Lecture Hall">Research Building Lecture Hall</option>
                 <option value="Library Conference Hall and Activity Room">Library Conference Hall and Activity Room</option>
             </select>
-            <br>Duration:
+            <br>&ensp;&ensp;&ensp;&ensp;Duration:&ensp;
             <label>
-                <input type="text" name="duration" id="edit-duration">
+                <input type="text" name="duration" id="edit-duration" style="width: 300px; height: 20px">
             </label>
-            <br>
+            <br><br>
             <input type="button" id="submitedit" value="Submit" onclick="submitEdit()"/>
-            <input type="button" id="closeedit" value="close" onclick = "closeeditdialog()"/>
+            <input type="button" id="closeedit" value="Close" onclick = "closeeditdialog()"/>
             <br>
         </form>
     </div>

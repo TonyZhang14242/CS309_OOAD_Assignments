@@ -8,7 +8,7 @@
     line-height: 40px;
     width: 500px;
     height: 500px;
-    text-align: center;
+    text-align: justify-all;
     background-color: #F9E3AF;
     font-size: 20px;
     margin: 40px auto 0;
@@ -19,6 +19,7 @@ table {
     border-collapse: separate;
     border-spacing: 5px;
     margin: 0 auto;
+    //width: 1250px;
 }
 th {
     border: 1px solid black;
@@ -31,8 +32,7 @@ td {
     padding: 15px;
     background-color: #F9E3AF;
     text-align: center;
-// 更加灵活的位置摆放参考flex布局
-font-size: 15px;
+    font-size: 15px;
 }
 div {
     line-height: 40px;
@@ -48,6 +48,7 @@ div {
     background-color: rgba(0, 0, 0, 0.5);
 }
 .model .container{
+    //text-align: left;
     width: 500px;
     height: 500px;
     background-color: #fff;
@@ -73,26 +74,32 @@ div {
 
 #submitinit{
     cursor: url("choice.cur"),auto;
+    background-color: lawngreen;
 }
 
 #closeinit{
     cursor: url("choice.cur"),auto;
+    background-color: red;
 }
 
 #submitedit{
     cursor: url("choice.cur"),auto;
+    background-color: lawngreen;
 }
 
 #closeedit{
     cursor: url("choice.cur"),auto;
+    background-color: red;
 }
 
 #course-edit-button{
     cursor: url("choice.cur"),auto;
+    background-color: darkturquoise;
 }
 
 #course-delete-button{
     cursor: url("choice.cur"),auto;
+    background-color: red;
 }
 
 body{
