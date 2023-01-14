@@ -135,7 +135,7 @@ public class BeanFactoryLocalTest {
         assertTrue(instance.getJ() instanceof JImpl);
         assertEquals(3, ((JImpl)instance.getJ()).getList().size());
         assertEquals(2, instance.getList().size());
-        assertEquals("notest", instance.getS());
+        assertTrue(instance.getS().equals("notest"));
     }
 
 
